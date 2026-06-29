@@ -1,344 +1,665 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepak Bisen | Java Full Stack Developer</title>
-    <meta name="description" content="Portfolio of Deepak Bisen, an MCA student and Java Spring Boot Developer.">
-
-    <!-- Tailwind CSS (Utility classes for styling) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Config for Brand Colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6', // Blue
-                        dark: '#0f172a',    // Slate 900
-                        card: '#1e293b',    // Slate 800
-                        text: '#cbd5e1',    // Slate 300
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-        }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepak Bisen | Java & Spring Boot Developer</title>
+<meta name="description" content="Portfolio of Deepak Bisen, MCA graduate and Java Spring Boot Backend Developer. AI Engineer Intern experience. Open to opportunities.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3b82f6',
+        dark: '#0f172a',
+        card: '#1e293b',
+        text: '#cbd5e1',
+      }
+    }
+  }
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .blob {
+    position: absolute;
+    filter: blur(90px);
+    z-index: -1;
+    opacity: 0.35;
+    border-radius: 9999px;
+  }
+  .section-title::after {
+    content: '';
+    display: inline-block;
+    height: 1px;
+    background: #334155;
+    vertical-align: middle;
+    width: 200px;
+    margin-left: 16px;
+  }
+  .skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59,130,246,0.08);
+    border: 1px solid rgba(59,130,246,0.2);
+    color: #93c5fd;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s;
+  }
+  .skill-pill:hover {
+    background: rgba(59,130,246,0.18);
+    border-color: rgba(59,130,246,0.5);
+  }
+  .project-card {
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .project-card:hover { transform: translateY(-3px); }
+  .timeline-dot::before {
+    content: '▹';
+    color: #3b82f6;
+    margin-right: 8px;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #94a3b8;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .social-link:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-2px);
+  }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: #3b82f6;
+    transition: width 0.2s;
+  }
+  .nav-link:hover::after { width: 100%; }
+  .cert-card {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid #1e3a5f;
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: #3b82f6; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeInUp 0.6s ease forwards; }
+  .fade-in-1 { animation-delay: 0.1s; opacity: 0; }
+  .fade-in-2 { animation-delay: 0.25s; opacity: 0; }
+  .fade-in-3 { animation-delay: 0.4s; opacity: 0; }
+  .fade-in-4 { animation-delay: 0.55s; opacity: 0; }
+  .profile-ring {
+    position: absolute; inset: -4px;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    transform: translate(8px, 8px);
+    transition: transform 0.2s;
+  }
+  .profile-wrap:hover .profile-ring { transform: translate(4px, 4px); }
+  #mobile-menu { display: none; }
+  #mobile-menu.open { display: block; }
+</style>
 
 <body class="bg-dark text-text selection:bg-primary selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-sm border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-white text-xl">
-                    <!-- DB<span c  lass="text-primary">.</span> -->
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home"
-                            class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#about"
-                            class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#projects"
-                            class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <!-- <a href="#contact"
-                            class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition">Contact
-                            Me</a> -->
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-slate-800">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <span class="mono text-primary font-medium text-sm tracking-widest">deepak.bisen<span class="text-slate-500">_</span></span>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home"       class="nav-link text-sm text-slate-400 hover:text-white transition mono">home</a>
+        <a href="#about"      class="nav-link text-sm text-slate-400 hover:text-white transition mono">about</a>
+        <a href="#experience" class="nav-link text-sm text-slate-400 hover:text-white transition mono">experience</a>
+        <a href="#projects"   class="nav-link text-sm text-slate-400 hover:text-white transition mono">projects</a>
+        <a href="#skills"     class="nav-link text-sm text-slate-400 hover:text-white transition mono">skills</a>
+        <a href="#contact"    class="nav-link text-sm text-slate-400 hover:text-white transition mono">contact</a>
+        <a href="#contact" class="border border-primary text-primary hover:bg-primary/10 px-4 py-1.5 rounded text-sm mono transition">hire me</a>
+      </div>
+      <button onclick="document.getElementById('mobile-menu').classList.toggle('open')"
+        class="md:hidden p-2 rounded text-slate-400 hover:text-white">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="bg-card border-t border-slate-700">
+    <div class="px-4 py-3 space-y-2">
+      <a href="#home"       class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">home</a>
+      <a href="#about"      class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">about</a>
+      <a href="#experience" class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">experience</a>
+      <a href="#projects"   class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">projects</a>
+      <a href="#skills"     class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">skills</a>
+      <a href="#contact"    class="block px-3 py-2 text-slate-300 hover:text-white text-sm mono">contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-16">
+  <div class="blob bg-blue-600 w-[500px] h-[500px] top-0 left-[-100px] top-[-100px]"></div>
+  <div class="blob bg-indigo-700 w-[300px] h-[300px] bottom-20 right-20"></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+    <div class="lg:w-3/4">
+      <p class="mono text-primary text-sm mb-5 fade-in fade-in-1">Hi, my name is</p>
+      <h1 class="text-5xl sm:text-7xl font-bold text-white leading-tight fade-in fade-in-2">
+        Deepak Bisen<span class="text-primary">.</span>
+      </h1>
+      <h2 class="text-3xl sm:text-5xl font-bold text-slate-400 mt-3 fade-in fade-in-3">
+        I build robust backends with<br class="hidden sm:block"/> Java &amp; Spring Boot.
+      </h2>
+      <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed fade-in fade-in-4">
+        MCA graduate from IPS Academy Indore &amp; former AI Engineer Intern at JAI AI (HCE Secure).
+        I specialise in cloud-native microservices, REST APIs, and scalable backend architectures.
+        Currently open to full-time opportunities.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4 fade-in fade-in-4">
+        <a href="#projects" class="bg-primary hover:bg-blue-600 text-white px-7 py-3 rounded font-semibold transition text-sm">
+          View My Work
+        </a>
+        <a href="#contact" class="border border-slate-600 hover:border-primary text-slate-300 hover:text-primary px-7 py-3 rounded font-semibold transition text-sm">
+          Get In Touch
+        </a>
+      </div>
+      <div class="mt-12 flex items-center gap-6">
+        <a href="https://github.com/deepak-bisen" target="_blank" class="social-link" title="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/deepak-bisen14" target="_blank" class="social-link" title="LinkedIn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100069500596157" target="_blank" class="social-link" title="Facebook">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/bisen_deepak_/" target="_blank" class="social-link" title="Instagram">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="mailto:bisen1412@gmail.com" class="social-link" title="Email">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="py-24 bg-card/30">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title text-2xl font-bold text-white mb-14 flex items-center">
+      <span class="text-primary mono mr-2 text-lg">01.</span> About Me
+    </h2>
+    <div class="grid md:grid-cols-5 gap-14 items-start">
+      <!-- Text -->
+      <div class="md:col-span-3 space-y-4 text-slate-300 text-[15px] leading-relaxed">
+        <p>
+          I'm a final-year <strong class="text-white">MCA graduate</strong> from
+          <strong class="text-primary">IPS Academy, Indore</strong> with a strong foundation in software
+          development. My journey in tech has been defined by a deep passion for the
+          <strong class="text-white">Java/Spring ecosystem</strong> and a drive to build backend systems
+          that actually solve real-world problems.
+        </p>
+        <p>
+          Most recently, I worked as an <strong class="text-white">AI Engineer Intern at JAI AI (HCE Secure)</strong>,
+          where I built backend services for an AI web interface, collaborated on Swim-Server migration to
+          PostgreSQL, and contributed to custom PfSense development. Before that, I helped improve product
+          quality as an App Testing Intern at Sharad Technologies.
+        </p>
+        <p>
+          Beyond coding, I serve as a <strong class="text-white">Placement Coordinator</strong> at IPS Academy —
+          bridging the gap between students and industry, which has sharpened my communication and
+          leadership skills considerably.
+        </p>
+        <p>Technologies I work with:</p>
+        <ul class="grid grid-cols-2 gap-y-2 gap-x-4 mono text-sm text-slate-400 mt-2">
+          <li class="timeline-dot">Java (Core &amp; Advanced)</li>
+          <li class="timeline-dot">Spring Boot &amp; Spring MVC</li>
+          <li class="timeline-dot">Spring Security / JWT</li>
+          <li class="timeline-dot">Spring Data JPA / Hibernate</li>
+          <li class="timeline-dot">MySQL / MariaDB / PostgreSQL</li>
+          <li class="timeline-dot">REST APIs / Microservices</li>
+          <li class="timeline-dot">Angular (SSR)</li>
+          <li class="timeline-dot">Docker / Git / Maven</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="mailto:bisen1412@gmail.com" class="inline-flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded font-semibold transition text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Say Hello
+          </a>
+          <a href="#" onclick="downloadResume()" class="inline-flex items-center gap-2 border border-primary text-primary hover:bg-primary/10 px-5 py-2.5 rounded font-semibold transition text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Download Resume
+          </a>
         </div>
-        <!-- Mobile Menu -->
-        <div class="hidden md:hidden bg-card" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
-                <a href="#home"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#projects"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-            </div>
+      </div>
+      <!-- Photo -->
+      <div class="md:col-span-2 flex justify-center">
+        <div class="profile-wrap relative w-64 h-64 sm:w-72 sm:h-72">
+          <div class="profile-ring"></div>
+          <div class="relative w-full h-full rounded-xl overflow-hidden">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAIMAdwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD02iiivsD8qCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoqtdala2QzPOkfsTzXP6r4+tLKJ/ITzpQMhWYL+PPasp1YU/idjpo4WtXdqcWzqaytZ8UafoKM13Nt243Ac4+tebP8VLq+Eq29zC0qk5iXAx26898VlMs+vAzz7vMUfON2QT/AFrzquPhGPuHu4fJKkpfvnZeR6OfiRpxQOkcrIeh4GarS/FfSbcMZkljUfxEZH6V5TLci3uG824O0/KTwuB9CeTVW+vfsRABP2cqdrLjJP1H9a87+0q19j2lkWG7v7z2SD4r+H5fv3DxELu+ZDjH1p9p8V/DN42I9RUcZJZSABXzNqHiaW2nUBkdUccDbuBBwD71Dea9bzO00DLZSk/vSqgrJ7kfzrphj6j3RyzySgn7rZ9YW/jrQLo4j1W2Y9fv4pZPEmn3iusV8hUcZj5/WvkW18ZRF0tLqf7JGWylxAuVP1GK7fQvi3caQGtrlIzECF8yMgrJ+HaumONu7SRx1Ml5VzU3c91a0gNqZwbmWMHJdZ+fyzVeW7uLKPz185YByW3biB71x+mfEnw7cSI32v8AsWcx7/M/gbHYjpWnoHjOLU7h3j2SwS5CyKf3U474P8J9q61JPZnlSoVIX5o/edrpviGO5iDOykH7pH8j71tKwYAg5B5Brz6/0v8As+08yGRhbscq69UB6H3+ldD4Q1k32nRwTsDcxEo2OjY6H8q0jJ35WclSkuXnhsdB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" alt="Deepak Bisen"
+              class="w-full h-full object-cover object-top"/>
+            <div class="absolute inset-0 bg-primary/10 hover:bg-transparent transition duration-300"></div>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Blob -->
-        <div class="blob bg-primary w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience" class="py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title text-2xl font-bold text-white mb-14 flex items-center">
+      <span class="text-primary mono mr-2 text-lg">02.</span> Experience
+    </h2>
+    <div class="relative pl-8 border-l border-slate-700 space-y-12">
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="lg:w-2/3">
-                <p class="text-primary font-medium mb-4">Hi, my name is</p>
-                <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-                    Deepak Bisen.
-                    <span class="block text-gray-400 text-4xl sm:text-5xl mt-2">I build robust backends with
-                       Java and Spring Boot.</span>
-                </h1>
-                <p class="mt-4 text-xl text-gray-400 max-w-2xl">
-                    I am an MCA student and Placement Coordinator specializing in building scalable applications using
-                    the Java ecosystem. I turn complex logic into clean, efficient code.
-                </p>
-                <div class="mt-8 flex gap-4">
-                    <a href="#projects"
-                        class="border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-md font-semibold transition">
-                        View Work
-                    </a>
-                    <a href="#contact"
-                        class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-md font-semibold transition">
-                        Hire Me
-                    </a>
-                </div>
+      <!-- Job 1 -->
+      <div class="relative">
+        <div class="absolute -left-10 w-4 h-4 rounded-full bg-primary border-2 border-dark mt-1"></div>
+        <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="text-lg font-bold text-white">AI Engineer Intern</h3>
+              <p class="text-primary mono text-sm">JAI AI – HCE SECURE &nbsp;·&nbsp; Indore, MP</p>
             </div>
+            <span class="mono text-xs text-slate-500 bg-slate-800 px-3 py-1 rounded-full">Feb 2026 – May 2026</span>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li class="timeline-dot">Developed backend services for the JAI AI web interface using Java and the Spring Boot framework.</li>
+            <li class="timeline-dot">Collaborated within the development team to build AI-driven solutions.</li>
+            <li class="timeline-dot">Worked on Swim-Server migration to PostgreSQL and building custom PfSense.</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">Spring Boot</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">PfSense</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-card/30">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <!-- Text Content -->
-                <div class="md:w-3/5">
-                    <h2 class="flex items-center text-2xl font-bold text-white mb-8">
-                        <span class="text-primary mr-0"></span> About Me
-                        <span class="ml-4 h-px bg-gray-700 flex-grow max-w-xs"></span>
-                    </h2>
-                    <div class="space-y-4 text-lg">
-                        <p>
-                            I am a final-year <strong class="text-primary">MCA student</strong> and a passionate Backend
-                            Developer specializing in the <strong class="text-white">Java/Spring ecosystem</strong>. My
-                            journey involves more than just writing code; as a Placement Coordinator, I bridge the gap
-                            between talent and industry, honing my leadership and communication skills daily.
-                        </p>
-                        <p>
-                            I thrive on building scalable systems that solve real-world problems—whether it’s digitizing
-                            manual workflows or optimizing database queries. When I'm not debugging Spring Boot
-                            applications, I'm likely exploring new tech stacks or organizing campus drives.
-                        </p>
-                        <p>
-                            Here are a few technologies I’ve been working with recently:
-                        </p>
-                        <ul class="grid grid-cols-2 gap-2 mt-4 text-sm font-mono">
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> Java (Core &
-                                Advanced)</li>
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> Spring Boot & MVC
-                            </li>
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> Hibernate / JPA</li>
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> MySQL / Database
-                                Design</li>
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> HTML5, CSS3, JS</li>
-                            <li class="flex items-center"><span class="text-primary mr-2">▹</span> Git & GitHub</li>
-                        </ul>
-                        <!-- RESUME BUTTON: Save your resume as 'resume.pdf' in the same folder -->
-                        <div class="mt-8">
-                            <a href="utils/RESUME_DEEPAK_BISEN.pdf" target="_blank" class="inline-flex items-center gap-2 border border-primary text-primary px-5 py-3 rounded hover:bg-primary/10 transition font-semibold text-sm">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                Download Resume
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image/Profile Placeholder -->
-                <div class="md:w-2/5 relative group">
-                    <div
-                        class="absolute top-4 left-4 w-full h-full border-2 border-primary rounded-md transition-transform group-hover:translate-x-1 group-hover:translate-y-1">
-                    </div>
-                    <div
-                        class="relative bg-gray-700 rounded-md overflow-hidden aspect-square flex items-center justify-center">
-                        <!-- profile image <img> tag -->
-                        <img src="utils/profile.jpeg" alt="Deepak Bisen"
-                            class="object-cover w-full h-full opacity-90 hover:opacity-100 transition duration-300" />
-                    </div>
-                </div>
+      <!-- Job 2 -->
+      <div class="relative">
+        <div class="absolute -left-10 w-4 h-4 rounded-full bg-slate-600 border-2 border-dark mt-1"></div>
+        <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="text-lg font-bold text-white">App Testing Intern</h3>
+              <p class="text-primary mono text-sm">Sharad Technologies (Remote) &nbsp;·&nbsp; Mumbai, MH</p>
             </div>
+            <span class="mono text-xs text-slate-500 bg-slate-800 px-3 py-1 rounded-full">Jan 2025 – Apr 2025</span>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li class="timeline-dot">Assisted in software testing, reported bugs to the development team and participated in problem-solving sessions.</li>
+            <li class="timeline-dot">Improved product design, performance and reliability through detailed user feedback analysis.</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill">QA Testing</span>
+            <span class="skill-pill">Bug Reporting</span>
+            <span class="skill-pill">User Feedback</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="flex items-center text-2xl font-bold text-white mb-12">
-                <span class="text-primary mr-0"></span> Featured Projects
-                <span class="ml-4 h-px bg-gray-700 flex-grow max-w-xs"></span>
-            </h2>
-
-            <!-- Project 1: Brickworks Pro -->
-            <div class="relative grid md:grid-cols-12 gap-8 mb-24 items-center">
-                <!-- Project Image Placeholder -->
-                <div
-                    class="md:col-span-7 relative rounded-md overflow-hidden bg-card h-80 flex items-center justify-center border border-gray-700 group">
-                    <div class="absolute inset-0 bg-primary/20 hover:bg-transparent transition duration-300 z-10"></div>
-                    <div class="text-gray-500 font-mono text-xl">
-                        <img src="utils/home-bwp.png" alt="Brickworks Pro UI Screenshot"
-                            class="object-cover w-full h-full opacity-90 hover:opacity-100 transition duration-300" />
-                    </div>
-                </div>
-
-                <!-- Project Content -->
-                <div class="md:col-span-5 md:text-right z-20 md:-ml-12">
-                    <h3 class="text-2xl font-bold text-white mb-4">Brickworks Pro</h3>
-
-                    <div
-                        class="bg-card p-6 rounded-md shadow-xl text-gray-300 mb-4 text-sm md:text-base border border-gray-700">
-                        <p>
-                            A comprehensive ERP solution designed for the brick manufacturing industry. It automates the
-                            complex calculation of weekly production counts, replacing manual ledgers with a digitized
-                            workflow.
-                        </p>
-                    </div>
-
-                    <ul class="flex flex-wrap md:justify-end gap-x-4 gap-y-2 text-sm font-mono text-gray-400 mb-6">
-                        <li>Java</li>
-                        <li>Spring Boot</li>
-                        <li>Hibernate</li>
-                        <li>MySQL</li>
-                        <li>REST API</li>
-            
-                    </ul>
-
-                    <div class="flex md:justify-end gap-4">
-                        <!-- GitHub Link -->
-                        <a href="https://github.com/deepak-bisen/brickworks-pro"
-                            class="text-gray-300 hover:text-primary transition" title="View Source Code">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
-                        <!-- External Link 
-                        <a href="#" class="text-gray-300 hover:text-primary transition" title="Live Demo">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>-->
-                    </div>
-                </div>
+      <!-- Leadership -->
+      <div class="relative">
+        <div class="absolute -left-10 w-4 h-4 rounded-full bg-slate-600 border-2 border-dark mt-1"></div>
+        <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 class="text-lg font-bold text-white">Placement Coordinator</h3>
+              <p class="text-primary mono text-sm">IPS Academy, Indore</p>
             </div>
-
-            <!-- Project 2: Journal App -->
-            <div class="relative grid md:grid-cols-12 gap-8 items-center">
-                <!-- Project Content (Left aligned for variety) -->
-                <div class="md:col-span-5 z-20 md:-mr-12 order-2 md:order-1">
-                    <h3 class="text-2xl font-bold text-white mb-4">Journal App</h3>
-
-                    <div
-                        class="bg-card p-6 rounded-md shadow-xl text-gray-300 mb-4 text-sm md:text-base border border-gray-700">
-                        <p>
-                            A personal journaling application that allows users to create, edit, and organize daily
-                            entries. Features a clean REST API backend and secure authentication.
-                        </p>
-                    </div>
-
-                    <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm font-mono text-gray-400 mb-6">
-                        <li>Java</li>
-                        <li>Spring Security</li>
-                        <li>MariaDB</li>
-                        <li>REST API</li>
-                    </ul>
-
-                    <div class="flex gap-4">
-                        <a href="https://github.com/deepak-bisen/journal-app-project"
-                            class="text-gray-300 hover:text-primary transition"><svg class="w-6 h-6" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg></a>
-                        <!-- External Link -->
-                        <a href="https://zen-zournal.netlify.app/"
-                            class="text-gray-300 hover:text-primary transition" title="Live Demo">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- Project Image -->
-                <div
-                    class="md:col-span-7 relative rounded-md overflow-hidden bg-card h-80 flex items-center justify-center border border-gray-700 group order-1 md:order-2">
-                    <div class="absolute inset-0 bg-primary/20 hover:bg-transparent transition duration-300 z-10"></div>
-                    <div class="text-gray-500 font-mono text-xl">
-                        <img src="utils/zen_journal.png" alt="Journal App UI"
-                            class="object-cover w-full h-full opacity-90 hover:opacity-100 transition duration-300" />
-                    </div>
-                </div>
-            </div>
+            <span class="mono text-xs text-slate-500 bg-slate-800 px-3 py-1 rounded-full">2024 – 2026</span>
+          </div>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li class="timeline-dot">Managed communication between students and the Placement Cell, improving process efficiency significantly.</li>
+            <li class="timeline-dot">Coordinated campus drives and bridged the gap between student talent and industry requirements.</li>
+          </ul>
         </div>
-    </section>
+      </div>
 
-    <!-- Leadership/Contact Section -->
-    <section id="contact" class="py-24 text-center">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold text-white mb-6">Get In Touch</h2>
-            <p class="text-gray-400 text-lg mb-10">
-                I am currently looking for java (full-stack) developer opportunities. Whether you have a question about my
-                projects or just want to say hi, I’ll try my best to get back to you!
-            </p>
+    </div>
+  </div>
+</section>
 
-            <a href="mailto:bisen1412@gmail.com"
-                class="inline-block border border-primary text-primary px-8 py-4 rounded hover:bg-primary/10 transition font-semibold">
-                Say Hello
-            </a>
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects" class="py-24 bg-card/20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title text-2xl font-bold text-white mb-14 flex items-center">
+      <span class="text-primary mono mr-2 text-lg">03.</span> Featured Projects
+    </h2>
 
-            <!-- Social Links -->
-            <div class="mt-12 flex justify-center space-x-8">
-                <a href="https://github.com/deepak-bisen"
-                    class="text-gray-400 hover:text-white hover:-translate-y-1 transition transform">
-                    <span class="sr-only">GitHub</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/deepak-bisen-207763252"
-                    class="text-gray-400 hover:text-white hover:-translate-y-1 transition transform">
-                    <span class="sr-only">LinkedIn</span>
-                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-            </div>
-
-            <footer class="mt-20 text-sm text-gray-600">
-                <p>Designed & Built by Deepak Bisen</p>
-            </footer>
+    <!-- Project 1: BrickWork's Pro -->
+    <div class="project-card grid md:grid-cols-12 gap-6 mb-20 items-center">
+      <div class="md:col-span-7 relative rounded-xl overflow-hidden bg-slate-800 h-72 border border-slate-700 group">
+        <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition duration-300 z-10"></div>
+        <div class="w-full h-full flex items-center justify-center">
+          <div class="text-center p-8">
+            <div class="text-6xl mb-4">🏗️</div>
+            <p class="mono text-slate-400 text-sm">BrickWork's Pro — Cloud-Native ERP</p>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="md:col-span-5 md:text-right z-20 md:-ml-8">
+        <p class="mono text-primary text-xs mb-2 tracking-widest">FEATURED PROJECT</p>
+        <h3 class="text-2xl font-bold text-white mb-4">BrickWork's Pro</h3>
+        <div class="bg-card p-5 rounded-xl shadow-xl text-slate-300 mb-4 text-sm leading-relaxed border border-slate-700">
+          <p>A cloud-native, microservice-based web platform that digitises a traditional
+          brick-manufacturing business. Features separate Spring Boot services for Products, Orders,
+          and Authentication — managed by a Spring Cloud API Gateway and Eureka Service Registry.
+          Built with Angular SSR for fast load times and SEO.</p>
+        </div>
+        <ul class="flex flex-wrap md:justify-end gap-x-4 gap-y-1 mono text-xs text-slate-400 mb-5">
+          <li>Java</li><li>Spring Boot</li><li>Angular SSR</li>
+          <li>MariaDB</li><li>JWT</li><li>OpenFeign</li><li>Eureka</li>
+        </ul>
+        <div class="flex md:justify-end gap-4">
+          <a href="https://github.com/deepak-bisen/brickworks-pro" target="_blank"
+            class="text-slate-400 hover:text-primary transition" title="GitHub">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
 
+    <!-- Project 2: Journal App -->
+    <div class="project-card grid md:grid-cols-12 gap-6 items-center">
+      <div class="md:col-span-5 z-20 md:-mr-8 order-2 md:order-1">
+        <p class="mono text-primary text-xs mb-2 tracking-widest">FEATURED PROJECT</p>
+        <h3 class="text-2xl font-bold text-white mb-4">Journal App — Zen Zournal</h3>
+        <div class="bg-card p-5 rounded-xl shadow-xl text-slate-300 mb-4 text-sm leading-relaxed border border-slate-700">
+          <p>A secure journaling platform using Spring Boot and MariaDB for the backend, with a
+          responsive Tailwind CSS and JavaScript frontend. Features Spring Security with BCrypt
+          authentication and Spring Scheduler + JavaMailSender for automated weekly sentiment reports.</p>
+        </div>
+        <ul class="flex flex-wrap gap-x-4 gap-y-1 mono text-xs text-slate-400 mb-5">
+          <li>Java</li><li>Spring Boot</li><li>Spring Security</li>
+          <li>MariaDB</li><li>REST APIs</li><li>Tailwind CSS</li>
+        </ul>
+        <div class="flex gap-4">
+          <a href="https://github.com/deepak-bisen/journal-app-project" target="_blank"
+            class="text-slate-400 hover:text-primary transition" title="GitHub">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://zen-zournal.netlify.app/" target="_blank"
+            class="text-slate-400 hover:text-primary transition" title="Live Demo">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="md:col-span-7 relative rounded-xl overflow-hidden bg-slate-800 h-72 border border-slate-700 group order-1 md:order-2">
+        <div class="absolute inset-0 bg-blue-900/30 group-hover:bg-transparent transition duration-300 z-10"></div>
+        <div class="w-full h-full flex items-center justify-center">
+          <div class="text-center p-8">
+            <div class="text-6xl mb-4">📔</div>
+            <p class="mono text-slate-400 text-sm">Zen Zournal — Smart Journaling</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" class="py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title text-2xl font-bold text-white mb-14 flex items-center">
+      <span class="text-primary mono mr-2 text-lg">04.</span> Skills &amp; Tech Stack
+    </h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">☕</span>
+          <h3 class="font-semibold text-white">Languages</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">⚙️</span>
+          <h3 class="font-semibold text-white">Backend</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">Spring Boot</span>
+          <span class="skill-pill">Spring MVC</span>
+          <span class="skill-pill">Spring Security</span>
+          <span class="skill-pill">Spring Data JPA</span>
+          <span class="skill-pill">Hibernate</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">JDBC</span>
+          <span class="skill-pill">OpenFeign</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🗄️</span>
+          <h3 class="font-semibold text-white">Databases</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">MariaDB</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">H2</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🔧</span>
+          <h3 class="font-semibold text-white">Developer Tools</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">IntelliJ IDEA</span>
+          <span class="skill-pill">VS Code</span>
+          <span class="skill-pill">Postman</span>
+          <span class="skill-pill">Maven</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🧠</span>
+          <h3 class="font-semibold text-white">CS Concepts</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">OOP</span>
+          <span class="skill-pill">SDLC</span>
+          <span class="skill-pill">DBMS</span>
+          <span class="skill-pill">OS</span>
+          <span class="skill-pill">DSA</span>
+          <span class="skill-pill">Microservices</span>
+          <span class="skill-pill">Generative AI</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🤝</span>
+          <h3 class="font-semibold text-white">Soft Skills</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-pill">Teamwork</span>
+          <span class="skill-pill">Adaptability</span>
+          <span class="skill-pill">Problem-Solving</span>
+          <span class="skill-pill">Quick Learner</span>
+          <span class="skill-pill">Communication</span>
+          <span class="skill-pill">Detail-Oriented</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education" class="py-24 bg-card/20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="section-title text-2xl font-bold text-white mb-14 flex items-center">
+      <span class="text-primary mono mr-2 text-lg">05.</span> Education
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-14">
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <p class="mono text-xs text-primary mb-3 tracking-widest">MCA · 2024 – 2026</p>
+        <h3 class="font-bold text-white text-lg mb-1">Master of Computer Applications</h3>
+        <p class="text-slate-400 text-sm mb-3">School of Computers, IPS Academy — Indore, MP</p>
+        <div class="flex items-center gap-2">
+          <span class="bg-blue-900/40 text-blue-300 mono text-xs px-3 py-1 rounded-full">CGPA: 7.80</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <p class="mono text-xs text-primary mb-3 tracking-widest">BCA · 2021 – 2024</p>
+        <h3 class="font-bold text-white text-lg mb-1">Bachelor of Computer Applications</h3>
+        <p class="text-slate-400 text-sm mb-3">School of Computers, IPS Academy — Indore, MP</p>
+        <div class="flex items-center gap-2">
+          <span class="bg-blue-900/40 text-blue-300 mono text-xs px-3 py-1 rounded-full">CGPA: 8.18</span>
+        </div>
+      </div>
+
+      <div class="bg-card border border-slate-700 hover:border-blue-800 rounded-xl p-6 transition">
+        <p class="mono text-xs text-primary mb-3 tracking-widest">12th · 2020 – 2021</p>
+        <h3 class="font-bold text-white text-lg mb-1">Higher Secondary (PCMB)</h3>
+        <p class="text-slate-400 text-sm mb-3">Govt. Excellence Higher Secondary School — Khairlanji, MP</p>
+        <div class="flex items-center gap-2">
+          <span class="bg-blue-900/40 text-blue-300 mono text-xs px-3 py-1 rounded-full">90.8%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications & Achievements -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+          <span class="text-primary">🏆</span> Achievements
+        </h3>
+        <div class="space-y-3">
+          <div class="cert-card">
+            <span class="text-2xl">🥈</span>
+            <div>
+              <p class="text-white text-sm font-medium">Hackathon Top-2 Finalist</p>
+              <p class="text-slate-400 text-xs mt-0.5">Selected among top 2 out of 10 teams (May 2025) for eCommerce Backend using Spring Boot.</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <span class="text-2xl">🎓</span>
+            <div>
+              <p class="text-white text-sm font-medium">Placement Coordinator — IPS Academy</p>
+              <p class="text-slate-400 text-xs mt-0.5">Managed student–industry communication, improving placement process efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+          <span class="text-primary">📜</span> Certifications
+        </h3>
+        <div class="space-y-3">
+          <div class="cert-card">
+            <span class="text-2xl">🔵</span>
+            <div>
+              <p class="text-white text-sm font-medium">Programming Using JAVA</p>
+              <p class="text-slate-400 text-xs mt-0.5">Infosys Springboard</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <span class="text-2xl">🔗</span>
+            <div>
+              <p class="text-white text-sm font-medium">Spring Boot Essential 3</p>
+              <p class="text-slate-400 text-xs mt-0.5">LinkedIn Learning</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <span class="text-2xl">📊</span>
+            <div>
+              <p class="text-white text-sm font-medium">Concepts in SQL</p>
+              <p class="text-slate-400 text-xs mt-0.5">Coursera</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="py-28 text-center">
+  <div class="max-w-2xl mx-auto px-4">
+    <p class="mono text-primary text-sm mb-4 tracking-widest">06. What's Next?</p>
+    <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+      I'm currently looking for Java backend / full-stack developer opportunities.
+      Whether you have a question about my projects, want to discuss a role, or just want to say hi —
+      my inbox is always open!
+    </p>
+    <a href="mailto:bisen1412@gmail.com"
+      class="inline-block bg-primary hover:bg-blue-600 text-white px-10 py-4 rounded font-semibold transition text-base mb-12">
+      Say Hello 👋
+    </a>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="https://github.com/deepak-bisen" target="_blank" class="social-link" title="GitHub">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/deepak-bisen14" target="_blank" class="social-link" title="LinkedIn">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100069500596157" target="_blank" class="social-link" title="Facebook">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/bisen_deepak_/" target="_blank" class="social-link" title="Instagram">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+    <footer class="mt-16 mono text-xs text-slate-600">
+      <p>Designed &amp; Built by Deepak Bisen &nbsp;·&nbsp; 2026</p>
+    </footer>
+  </div>
+</section>
+
+<script>
+function downloadResume() {
+  alert("Place your resume PDF at 'utils/Deepak-Bisen-Resume-2.pdf' relative to this HTML file to enable download.");
+}
+</script>
 </body>
-
 </html>
